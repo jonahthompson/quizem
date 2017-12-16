@@ -1,0 +1,33 @@
+<div class="container">
+	<div class="quiz_form_wrap">
+		<%= form_with model: @quiz, url: quizzes_path do |f| %>
+		  <div class="form-row">
+		    <div class="col">
+		    	<%= f.label :name, "Quiz Name" %>
+		      <%= f.text_field :name, placeholder: "Quiz Name", class: "form-control" %>
+		    </div>
+		    <div class="col">
+		    	<%= f.label :subject, "Subject" %>
+					<%= f.text_field :subject, placeholder: "Subject", class: "form-control" %>
+		    </div>
+		  </div>
+		  <div class="form-row">
+		    <div class="col">
+		    	<%= f.label :question, "Question" %>
+		      <%= f.text_field :question, placeholder: "Question", class: "form-control" %>
+		    </div>
+		  </div>
+		  <div class="form-row">
+		    <div class="col">
+		    	<%= f.label :answer, "Answer 1" %>
+		      <%= f.text_field :answer, placeholder: "Answer 1", class: "form-control" %>
+		    </div>
+		    <div class="col">
+		    	<%= f.label :subject, "Subject" %>
+					<%= f.text_field :subject, placeholder: "Subject", class: "form-control" %>
+		    </div>
+		  </div>
+		  <%= f.submit "Create", class: "btn float-right quiz_form_submit_button" %>
+		<% end %>
+	</div>
+</div>

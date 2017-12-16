@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quizem</title>
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <nav class="navbar nav">
+     <%= link_to "Quizem", root_path, class: "navbar-brand brand" %>
+      <ul class="nav_list">
+        <li class="nav-item">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "link_color_white" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Home", root_path, class: "link_color_white" %>
+        </li>
+        <% if current_user %>
+        <li class="nav-item">
+          <%= link_to "User Show", user_path(current_user), class: "link_color_white" %>
+        </li>
+        <% end %>
+      </ul>
+    </nav>
+  	<div class="container-fluid">
+	    <%= yield %>
+			<p class="notice"><%= notice %></p>
+	    <p class="alert"><%= alert %></p>
+    </div>
+  </body>
+</html>
