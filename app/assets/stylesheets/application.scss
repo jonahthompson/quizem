@@ -18,6 +18,9 @@
 body {
 	background: #76D9B9;
 }
+.oswald {
+	font-family: 'Oswald', sans-serif;
+}
 .nav {
 	background: #0E5159;
 	height: 70px;
@@ -30,25 +33,48 @@ body {
 }
 .nav_list {
   list-style-type: none;
-  margin: 0px;
+  margin: 10px 0px 0px 0px;
 }
 .nav-item {
  	float: right;
  	text-decoration: none;
  	margin: 0px 5px;
 }
+.dropdown_style {
+	background: #0E5159;
+}
 .link_color_white {
 	color: white;
+	cursor: pointer;
 	font-family: 'Oswald', sans-serif;
 	font-size: 20px;
 	text-decoration: none;
 }
 .quiz_form_wrap {
-	background: #f2f3f4;
-	border-radius: 5px;
-	padding: 33px 15px 67px 15px;
+	-webkit-box-shadow: 10px 10px 36px 0px rgba(0,0,0,0.35);
+	-moz-box-shadow: 10px 10px 36px 0px rgba(0,0,0,0.35);
+	box-shadow: 10px 10px 36px 0px rgba(0,0,0,0.35);
 	margin: 50px 0px 0px 0px;
+	border-radius: 5px;
+}
+.quiz_form_header {
+	background: #0E5159;
+	border-radius: 5px 5px 0px 0px;
+	height: 80px;
+	padding: 15px 0px 15px 15px;
+}
+.quiz_form_body {
+	background: #f2f3f4;
+	border-radius: 0px 0px 5px 5px;
+	padding: 33px 15px 67px 15px;
 }
 .quiz_form_submit_button {
-	margin: 10px 0px 0px 0px;
+	background-color: #0E5159;
+	color: white;
+	margin: 15px 0px 0px 0px;
+}
+.quiz_form_submit_button:hover {
+  background-color: white;
+  border-color: #0E5159;
+  color: #0E5159;
 }
