@@ -1,0 +1,37 @@
+<div id="user-<%= current_user.id %>" class="quiz_form_wrap">
+	<div class="quiz_form_header">
+		<h1 class="brand">Create your own quiz!</h1>
+	</div>
+	<div class="quiz_form_body">
+		<%= form_with model: @quiz do |f| %>
+		<%= f.hidden_field :user_id, value: current_user.id %>
+		  <div class="form-row">
+		    <div class="col">
+		    	<%= f.label :name, "Quiz Name", class: "label oswald" %>
+		      <%= f.text_field :name, placeholder: "Quiz Name", class: "form-control", autofocus: true %>
+		    </div>
+		    <div class="col">
+		    	<%= f.label :subject, "Subject", class: "label oswald" %>
+					<%= f.text_field :subject, placeholder: "Subject", class: "form-control" %>
+		    </div>
+		  </div>
+		  <%= f.fields_for :questions do |q| %>
+		  <div class="form-row">
+		    <div class="col">
+		    	<%= q.label :content, "Question", class: "label oswald" %>
+		      <%= q.text_field :content, placeholder: "Type your question here...", class: "form-control" %>
+		    </div>
+		  </div>
+		  <div class="form-row">
+		  <%= q.fields_for :answers do |a| %>
+		    <div class="col">
+		    	<%= a.label :content, "Answer", class: "label oswald" %>
+		      <%= a.text_field :content, placeholder: "Answer here...", class: "form-control" %>
+		    </div>
+		 	<% end %>
+		 	</div>
+		 	<% end %>
+		  <%= f.submit "Create", class: "btn float-right quiz_form_submit_button oswald" %>
+		<% end %>
+	</div>
+</div>

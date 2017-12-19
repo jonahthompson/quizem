@@ -1,0 +1,22 @@
+<div class="container">
+	<% @quiz.questions.each do |question| %>
+	<div id="user-<%= current_user.id %>" class="question_form_wrap">
+		<div class="question_form_header">
+			<h1 class="brand">Question </h1>
+		</div>
+		<div class="question_form_body">
+		  <div class="form-row">
+		    <p><%= question.content %></p>
+		  </div>
+	  	<%= question.answers.each do |answer| %>
+			  <div class="form-row">
+			  	<ul>
+			    	<input class="form-check-input" type="radio"><%= answer.content %></input>
+			    </ul>
+			  </div>
+	 		<% end %>
+			<button class="btn next_question_button float-right">Next</button>
+		</div>
+	</div>
+<% end %>
+</div>
