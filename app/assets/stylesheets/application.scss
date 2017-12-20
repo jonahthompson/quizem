@@ -51,15 +51,16 @@ body {
 }
 .nav_list {
   list-style-type: none;
-  margin: 10px 0px 0px 0px;
+  margin: 15px 0px 0px 0px;
 }
 .nav-item {
  	float: right;
  	text-decoration: none;
- 	margin: 0px 5px;
+ 	margin: 5px;
 }
 .dropdown_style {
 	background: #0E5159;
+	padding: 15px;
 }
 .link_color_white {
 	color: white;
@@ -85,7 +86,7 @@ body {
 .quiz_form_body {
 	background: #f2f3f4;
 	border-radius: 0px 0px 5px 5px;
-	padding: 33px 15px 67px 15px;
+	padding: 15px;
 }
 .quiz_form_submit_button {
 	background-color: #0E5159;
@@ -94,6 +95,27 @@ body {
 }
 .quiz_form_submit_button:hover {
   background-color: white;
+  border-color: #0E5159;
+  color: #0E5159;
+}
+.add_answer_field {
+	background-color: #0E5159;
+	color: white;
+	margin: 15px 0px 0px 0px;
+	text-decoration: none;
+}
+.add_answer_field:hover {
+	background-color: white;
+  border-color: #0E5159;
+  color: #0E5159;
+}
+.add_question_field {
+	background-color: #0E5159;
+	color: white;
+	margin: 15px 0px 0px 0px;
+}
+.add_question_field:hover {
+	background-color: white;
   border-color: #0E5159;
   color: #0E5159;
 }
@@ -114,7 +136,13 @@ body {
 .question_form_body {
 	background: #f2f3f4;
 	border-radius: 0px 0px 5px 5px;
-	padding: 33px 15px 67px 15px;
+	padding: 12px 15px 67px 15px;
+}
+.question_text_wrap {
+	background: white;
+	border: solid 2px #bababa;
+	border-radius: 5px;
+	padding: 12px;
 }
 .next_question_button {
 	background-color: #0E5159;
