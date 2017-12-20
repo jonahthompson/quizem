@@ -13,21 +13,31 @@
       <div class="nav_list">
         <% if current_user %>
         <div class="nav-item">
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "link_color_white" %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <li class="link_color_white">Logout</li>
+          <% end %>
         </div>
         <div class="nav-item dropdown">
           <p class="dropdown-toggle link_color_white" data-toggle="dropdown">User
           <span class="caret"></span></a>
           <ul class="dropdown-menu dropdown_style">
-            <li><%= link_to "My Quizzes", quizzes_path %></li>
-            <li><%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "link_color_white" %></li>
-            <li><%= link_to "User Show", user_path(current_user), class: "link_color_white" %></li>
+            <%= link_to quizzes_path do %>
+              <li class="link_color_white">All Surveys</li>
+            <% end %>
+            <%= link_to edit_user_registration_path(current_user) do %>
+              <li class="link_color_white">Edit Profile</li>
+            <% end %>
+            <%= link_to user_path(current_user) do %>
+              <li class="link_color_white">User Profile</li>
+            <% end %>
           </ul>
         </div>
-        <% end %>
         <div class="nav-item">
-          <%= link_to "Home", root_path, class: "link_color_white" %>
+          <%= link_to root_path do %>
+            <li class="link_color_white">Home</li>
+          <% end %>
         </div>
+        <% end %>
       </div>
     </nav>
   	<div class="container-fluid">

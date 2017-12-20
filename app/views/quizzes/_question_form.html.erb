@@ -5,9 +5,11 @@
 			<h1 class="brand">Question </h1>
 		</div>
 		<div class="question_form_body">
-		  <div class="form-row">
-		    <p><%= question.content %></p>
-		  </div>
+			<div class="question_text_wrap">
+			  <div class="form-row">
+			    <p><%= question.content %></p>
+			  </div>
+			</div>
 	  	<%= question.answers.each do |answer| %>
 			  <div class="form-row">
 			  	<ul>
