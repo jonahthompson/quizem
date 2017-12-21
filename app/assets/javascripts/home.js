@@ -1,39 +1,61 @@
 $(document).on('turbolinks:load', function(){
-	// $('.quiz_form_submit_button').on('click', function(){
-	// 	let div = $('.quiz_form_wrap')
-	// 	div.animate({right: '150%'}, "slow");
-	// })
-	
-	$('.add_question_field').on('click', function(){
-		let t = 1;
-		let new_question_field = `<div class="question_section">
-			  <div class="form-row">
-			    <div class="col">
-			    	<label class="label oswald" for="quiz_questions_attributes_0_content">Question</label>
-			      <input placeholder="Type your question here..." class="form-control" type="text" name="quiz[questions_attributes][0][content]" id="quiz_questions_attributes_0_content">
-			    </div>
-			  </div>
-				<div class="answer_section">
-				  <div class="form-row">
+
+	$(document).on('click', '.add_question_field', function(){
+		let $btn = $(this);
+		let $quiz = $btn.parent()
+		let question_section = $quiz.find('.question_section');
+		let last_question = question_section.find('.question_field').last();
+		let last_question_name = last_question.attr('name');
+		let last_question_id = getId(last_question_name, 2);
+		question_section.append(questionHtmlGen(last_question_id));
+	})
+
+	$(document).on('click', '.add_answer_field', function(){
+		let $btn = $(this);
+		let $question = $btn.closest('.question');
+		let question_name = $question.find('.question_field').attr('name'); //element with name
+		let question_id = getId(question_name, 2);
+
+		let $last_answer = $question.find('.answer_section').find('.answer_field').last();
+		let last_answer_name = $last_answer.attr('name'); //element with name
+		let last_answer_id = getId(last_answer_name, 4);
+
+		$question.find('.answer_section').append(answerHtmlGen(question_id, last_answer_id));
+	})
+	function getId(name, index){
+
+										// returns ["quiz", "[question_attributes]","[0] ...]   |-|returns [0]
+		return parseInt(name.split(/(\[\w+\])/).filter(val => val !== "")[index][1]);
+	}
+
+	function answerHtmlGen(question_id, last_answer_id){
+		last_answer_id++;
+		return `<div class="form-row">
 				    <div class="col">
-				    	<label class="label oswald" for="quiz_questions_attributes_0_answers_attributes_0_content">Answer</label>
-				      <input placeholder="Answer here..." class="form-control" type="text" name="quiz[questions_attributes][0][answers_attributes][0][content]" id="quiz_questions_attributes_0_answers_attributes_0_content">
+				    	<label class="label oswald" for="quiz_questions_attributes_${question_id}_answers_attributes_${last_answer_id}_content">Answer</label>
+				      <input placeholder="Answer here..." class="form-control answer_field" type="text" name="quiz[questions_attributes][${question_id}][answers_attributes][${last_answer_id}][content]" id="quiz_questions_attributes_0_answers_attributes_${last_answer_id}_content">
 				    </div>
-				 	</div>
-			 	</div>
-			 	<div class="btn add_answer_field oswald">+ Add Answer Field</div>
-		 	</div>`
-		$('.question_section').append(new_question_field);
-		t + 1;
-	})
-	$('.add_answer_field').on('click', function(){
-		let ts = new Date()
-		let new_answer_field = `<div class="form-row">
-			    <div class="col">
-			    	<label class="label oswald" for="quiz_questions_attributes_0_answers_attributes_${ts}_content">Answer</label>
-			      <input placeholder="Answer here..." class="form-control" type="text" name="quiz[questions_attributes][0][answers_attributes][${ts}][content]" id="quiz_questions_attributes_0_answers_attributes_${ts}_content">
-			    </div>
-			 	</div>`
-		$('.answer_section').append(new_answer_field)
-	})
+				 	</div>`
+	}
+	function questionHtmlGen(last_question_id){
+		last_question_id++;
+		return `<div class="question">
+     	 <div class="form-row">
+	       <div class="col">
+	         <label class="label oswald" for="quiz_questions_attributes_${last_question_id}_content">Question</label>
+	         <input placeholder="Type your question here..." class="form-control question_field" type="text" name="quiz[questions_attributes][${last_question_id}][content]" id="quiz_questions_attributes_0_content">
+	       </div> <!-- end .col -->
+       </div>
+       <div class="answer_section">
+         
+         <div class="form-row">
+           <div class="col">
+             <label class="label oswald" for="quiz_questions_attributes_${last_question_id}_answers_attributes_0_content">Answer</label>
+             <input placeholder="Answer here..." class="form-control answer_field" type="text" name="quiz[questions_attributes][${last_question_id}][answers_attributes][0][content]" id="quiz_questions_attributes_${last_question_id}_answers_attributes_0_content">
+           </div> <!-- end .col -->
+         </div> <!-- end .col -->
+       </div> <!-- end .col -->
+       <button type="button" class="btn add_answer_field oswald">+ Add Answer Field</button>
+     </div>`
+	}
 });
