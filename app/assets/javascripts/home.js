@@ -22,8 +22,8 @@ $(document).on('turbolinks:load', function(){
 
 		$question.find('.answer_section').append(answerHtmlGen(question_id, last_answer_id));
 	})
+	
 	function getId(name, index){
-
 										// returns ["quiz", "[question_attributes]","[0] ...]   |-|returns [0]
 		return parseInt(name.split(/(\[\w+\])/).filter(val => val !== "")[index][1]);
 	}
@@ -42,12 +42,11 @@ $(document).on('turbolinks:load', function(){
 		return `<div class="question">
      	 <div class="form-row">
 	       <div class="col">
-	         <label class="label oswald" for="quiz_questions_attributes_${last_question_id}_content">Question</label>
+	         <label class="label oswald" for="quiz_questions_attributes_${last_question_id}_content">Question ${last_question_id + 1}</label>
 	         <input placeholder="Type your question here..." class="form-control question_field" type="text" name="quiz[questions_attributes][${last_question_id}][content]" id="quiz_questions_attributes_0_content">
 	       </div> <!-- end .col -->
        </div>
        <div class="answer_section">
-         
          <div class="form-row">
            <div class="col">
              <label class="label oswald" for="quiz_questions_attributes_${last_question_id}_answers_attributes_0_content">Answer</label>

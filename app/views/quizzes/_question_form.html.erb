@@ -14,8 +14,9 @@
 			  <div class="form-row">
 			  	<ul>
 			    	<input class="form-check-input" type="radio"><%= answer.content %></input>
-			    	<% form_with model: @user_quiz do |f| %>
-			    		<%= f.radio_button :response, false, :checked => true %>
+						<%= fields_for :taken_questions do |tq| %>
+			    		<%= tq.hidden_field :user_quiz_id, value: @user_quiz.id %>
+			    		<%= tq.radio_button :response, false, :checked => true %>
 			    	<% end %>
 			    </ul>
 			  </div>

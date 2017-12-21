@@ -9,11 +9,12 @@ class QuizzesController < ApplicationController
   def create
     @quiz = current_user.quizzes.new(quiz_params)
     @quiz.save
-    redirect_to @quiz
+    redirect_to quizzes_path
   end
 
   def show
     @quiz = Quiz.find(params[:id])
+    @user_quiz = UserQuiz.create(user_id: current_user.id, quiz_id: @quiz.id)
   end
 
   def edit
