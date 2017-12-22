@@ -1,5 +1,16 @@
 $(document).on('turbolinks:load', function(){
 
+	// $('.quiz_form').on('submit', function(e){
+	// 	let $field_array = $('.form-control');
+	// 	$field_array.each(function(){
+	// 		if($(this).val('')){
+	// 			alert('Please fill out all fields');
+	// 			e.preventDefault();
+	// 			return false
+	// 		} 
+	// 	})
+	// });
+	//adds a question field
 	$(document).on('click', '.add_question_field', function(){
 		let $btn = $(this);
 		let $quiz = $btn.parent()
@@ -9,7 +20,7 @@ $(document).on('turbolinks:load', function(){
 		let last_question_id = getId(last_question_name, 2);
 		question_section.append(questionHtmlGen(last_question_id));
 	})
-
+	//adds an anwswer field
 	$(document).on('click', '.add_answer_field', function(){
 		let $btn = $(this);
 		let $question = $btn.closest('.question');
@@ -22,21 +33,31 @@ $(document).on('turbolinks:load', function(){
 
 		$question.find('.answer_section').append(answerHtmlGen(question_id, last_answer_id));
 	})
+
+	$(document).on('click', '.remove_answer_field', function(){
+		$(this).parent().remove();
+	})
+
+	$(document).on('click', '.remove_question_field', function(){
+		$(this).closest('.question').remove();
+	})
 	
 	function getId(name, index){
 										// returns ["quiz", "[question_attributes]","[0] ...]   |-|returns [0]
 		return parseInt(name.split(/(\[\w+\])/).filter(val => val !== "")[index][1]);
 	}
-
+	//generates answer field
 	function answerHtmlGen(question_id, last_answer_id){
 		last_answer_id++;
 		return `<div class="form-row">
 				    <div class="col">
 				    	<label class="label oswald" for="quiz_questions_attributes_${question_id}_answers_attributes_${last_answer_id}_content">Answer</label>
 				      <input placeholder="Answer here..." class="form-control answer_field" type="text" name="quiz[questions_attributes][${question_id}][answers_attributes][${last_answer_id}][content]" id="quiz_questions_attributes_0_answers_attributes_${last_answer_id}_content">
+				      <button type="button" class="btn remove_answer_field oswald">- Remove Answer Field</button>
 				    </div>
 				 	</div>`
 	}
+	//generates question field
 	function questionHtmlGen(last_question_id){
 		last_question_id++;
 		return `<div class="question">
@@ -55,6 +76,7 @@ $(document).on('turbolinks:load', function(){
          </div> <!-- end .col -->
        </div> <!-- end .col -->
        <button type="button" class="btn add_answer_field oswald">+ Add Answer Field</button>
+       <button type="button" class="btn remove_question_field oswald">- Remove Question Field</button>
      </div>`
 	}
 });

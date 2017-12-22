@@ -98,23 +98,23 @@ body {
   border-color: #0E5159;
   color: #0E5159;
 }
-.add_answer_field {
+.add_answer_field, .remove_answer_field {
 	background-color: #0E5159;
 	color: white;
 	margin: 15px 0px 0px 0px;
 	text-decoration: none;
 }
-.add_answer_field:hover {
+.add_answer_field:hover, .remove_answer_field:hover {
 	background-color: white;
   border-color: #0E5159;
   color: #0E5159;
 }
-.add_question_field {
+.add_question_field, .remove_question_field {
 	background-color: #0E5159;
 	color: white;
 	margin: 15px 0px 0px 0px;
 }
-.add_question_field:hover {
+.add_question_field:hover, .remove_question_field:hover {
 	background-color: white;
   border-color: #0E5159;
   color: #0E5159;
