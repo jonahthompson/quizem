@@ -1,5 +1,6 @@
 class UserQuizzesController < ApplicationController
   def index
+    
   end
 
   def new
@@ -9,6 +10,8 @@ class UserQuizzesController < ApplicationController
   end
 
   def show
+    @user_quiz = UserQuiz.find(params[:id])
+    @quiz = @user_quiz.quiz
   end
 
   def edit

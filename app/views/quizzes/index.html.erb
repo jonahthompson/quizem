@@ -3,12 +3,12 @@
 		<div class="card-header">
 			<h2>Surveys</h2>
 		</div>
+		<ul>
+		<% @quizzes.each do |quiz| %>
 		<div class="card-body">
-			<ul>
-			<% @quizzes.each do |quiz| %>
-			 	<li>Name:<%= quiz.name %> <%= link_to "Take Survey", quiz_path(quiz) %></br> Subject:<%= quiz.subject %></li>
-			<% end %>
-			</ul>
+		 	<li>Name:<%= quiz.name %> <%= link_to "Take Survey", quiz_path(quiz) %></br> Subject:<%= quiz.subject %></br><%= link_to "Delete Survey", quiz_path(quiz), class: "float-right", method: :delete %></li>
 		</div>
+		<% end %>
+		</ul>
 	</div>
 </div>

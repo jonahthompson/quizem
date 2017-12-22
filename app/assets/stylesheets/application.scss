@@ -144,12 +144,12 @@ body {
 	border-radius: 5px;
 	padding: 12px;
 }
-.next_question_button {
+.next_question_button, .submit_user_quiz_button {
 	background-color: #0E5159;
 	color: white;
 	margin: 15px 0px 0px 0px;
 }
-.next_question_button:hover {
+.next_question_button:hover, .submit_user_quiz_button:hover {
   background-color: white;
   border-color: #0E5159;
   color: #0E5159;

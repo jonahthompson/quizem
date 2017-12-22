@@ -1,5 +1,12 @@
 <div class="container">
-	<%= image_tag current_user.avatar.url(:medium) %>
-	<p><%= current_user.first_name %> <%= current_user.last_name %></p>
-	<p><%= current_user.email %></p>
+		<div class="card">
+			<div class="card-header">
+				<h2><%= current_user.first_name %> <%= current_user.last_name %></h2>
+			</div>
+			<div class="card-body">
+				<%= image_tag current_user.avatar.url(:medium) %>
+				<p><%= current_user.email %></p>
+				<p>Member since: <%= current_user.created_at.to_formatted_s(:long_ordinal) %></p>
+			</div>
+		</div>
 </div>

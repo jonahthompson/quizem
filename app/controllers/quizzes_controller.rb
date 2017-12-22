@@ -14,7 +14,7 @@ class QuizzesController < ApplicationController
 
   def show
     @quiz = Quiz.find(params[:id])
-    @user_quiz = UserQuiz.create(user_id: current_user.id, quiz_id: @quiz.id)
+    @user_quiz = current_user.user_quizzes.create(quiz_id: @quiz.id)
   end
 
   def edit
@@ -24,9 +24,14 @@ class QuizzesController < ApplicationController
   end
 
   def destroy
+    @quiz = Quiz.find(params[:id]).destroy
   end
 
 protected
+
+  def user_quiz_params
+    params.permit(:id)
+  end
 
   def quiz_params
     params.require(:quiz).permit(:name, :subject, :question, :user_id, 

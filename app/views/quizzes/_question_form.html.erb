@@ -1,28 +1,38 @@
 <div class="container">
-	<% @quiz.questions.each do |question| %>
-	<div id="user-<%= current_user.id %>" class="question_form_wrap">
-		<div class="question_form_header">
-			<h1 class="brand">Question </h1>
-		</div>
-		<div class="question_form_body">
-			<div class="question_text_wrap">
-			  <div class="form-row">
-			    <p><%= question.content %></p>
-			  </div>
+	<%= form_with model: TakenQuestion.new, local: true do |tq| %>
+		<%= hidden_field_tag :user_quiz_id, @user_quiz.id %>
+			<div class="taken_question">
+				<% @quiz.questions.each_with_index do |question, i| %>
+				<div id="user-<%= current_user.id %>" class="question_form_wrap">
+					<div class="question_form_header">
+						<h1 class="brand">Question </h1>
+					</div>
+					<div class="question_form_body">
+						<div class="question_text_wrap">
+						  <div class="form-row">
+						    <p><%= question.content %></p>
+						  </div>
+						</div>
+				  	<% question.answers.each do |answer| %>
+				  		<%= fields_for :responses do |r| %>
+								<%= r.hidden_field "taken_question[#{i}][question_id]", value: question.id %>
+							  <div class="form-row">
+							  	<ul>
+							    	<p class="radio_button"><%= answer.content %> <%= r.radio_button "taken_question[#{i}][response]", answer.content %></p>
+							    </ul>
+							  </div>
+						  <% end %>
+				 		<% end %>
+						<div class="button_holder">
+							<% if i == @quiz.questions.length - 1 %>
+								<button class="btn submit_user_quiz_button float-right" type="submit">Submit</button>
+							<% else %>
+<!-- 								<button class="btn next_question_button float-right" type="button">Next</button> -->
+							<% end %>
+						</div>
+					</div>
+				</div>
+			<% end %>
 			</div>
-	  	<% question.answers.each do |answer| %>
-			  <div class="form-row">
-			  	<ul>
-			    	<input class="form-check-input" type="radio"><%= answer.content %></input>
-						<%= fields_for :taken_questions do |tq| %>
-			    		<%= tq.hidden_field :user_quiz_id, value: @user_quiz.id %>
-			    		<%= tq.radio_button :response, false, :checked => true %>
-			    	<% end %>
-			    </ul>
-			  </div>
-	 		<% end %>
-			<button class="btn next_question_button float-right">Next</button>
-		</div>
-	</div>
-<% end %>
+	<% end %>
 </div>

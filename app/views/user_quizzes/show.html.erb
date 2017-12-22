@@ -1,2 +1,13 @@
-<h1>UserQuizzes#show</h1>
-<p>Find me in app/views/user_quizzes/show.html.erb</p>
+<div class="card">
+	<div class="card-header">
+		<h2>Survey Results</h2>
+	</div>
+	<div class="card-body">
+		<p>You answered...</p>
+		<ol>
+			<% @user_quiz.taken_questions.each do |tq| %>
+					<li><%= tq.response %></li>
+			<% end %>
+		</ol>
+	</div>
+</div>
