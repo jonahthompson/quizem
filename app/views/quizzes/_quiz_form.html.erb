@@ -3,7 +3,7 @@
    <h1 class="brand">Create your own survey!</h1>
  </div> <!-- end .quiz_form_header -->
  <div class="quiz_form_body">
-   <%= form_with model: @quiz do |f| %>
+   <%= form_with model: @quiz, class: "quiz_form", local: true do |f| %>
    <%= f.hidden_field :user_id, value: current_user.id %>
    <div class="form-row">
      <div class="col">

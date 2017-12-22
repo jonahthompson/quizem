@@ -7,6 +7,7 @@ class QuizzesController < ApplicationController
   end
 
   def create
+
     @quiz = current_user.quizzes.new(quiz_params)
     @quiz.save
     redirect_to quizzes_path
@@ -25,9 +26,20 @@ class QuizzesController < ApplicationController
 
   def destroy
     @quiz = Quiz.find(params[:id]).destroy
+    render quizzes_path
   end
 
 protected
+
+  def param_clean(_params)
+    _params.delete_if do |k, v|
+      if v.instance_of?(ActionController::Parameters)
+        param_clean(v)
+      end
+      v.empty?
+    end
+  end
+
 
   def user_quiz_params
     params.permit(:id)
