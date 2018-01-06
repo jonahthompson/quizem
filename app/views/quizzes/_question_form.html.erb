@@ -5,7 +5,7 @@
 				<% @quiz.questions.each_with_index do |question, i| %>
 				<div id="user-<%= current_user.id %>" class="question_form_wrap">
 					<div class="question_form_header">
-						<h1 class="brand">Question </h1>
+						<h1 class="brand">Question <%= i + 1 %></h1>
 					</div>
 					<div class="question_form_body">
 						<div class="question_text_wrap">
@@ -17,7 +17,7 @@
 				  		<%= fields_for :responses do |r| %>
 								<%= r.hidden_field "taken_question[#{i}][question_id]", value: question.id %>
 							  <div class="form-row">
-							  	<ul>
+							  	<ul class="answers_wrap">
 							    	<p class="radio_button"><%= answer.content %> <%= r.radio_button "taken_question[#{i}][response]", answer.content %></p>
 							    </ul>
 							  </div>

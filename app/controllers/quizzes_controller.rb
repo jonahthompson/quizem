@@ -26,7 +26,7 @@ class QuizzesController < ApplicationController
 
   def destroy
     @quiz = Quiz.find(params[:id]).destroy
-    render quizzes_path
+    redirect_to quizzes_path
   end
 
 protected
