@@ -13,7 +13,7 @@ $(document).on('turbolinks:load', function(){
 	//adds a question field
 	$(document).on('click', '.add_question_field', function(){
 		let $btn = $(this);
-		let $quiz = $btn.parent()
+		let $quiz = $btn.parent();
 		let question_section = $quiz.find('.question_section');
 		let last_question = question_section.find('.question_field').last();
 		let last_question_name = last_question.attr('name');
@@ -33,11 +33,11 @@ $(document).on('turbolinks:load', function(){
 
 		$question.find('.answer_section').append(answerHtmlGen(question_id, last_answer_id));
 	})
-
+	//removes answer field
 	$(document).on('click', '.remove_answer_field', function(){
 		$(this).parent().remove();
 	})
-
+	//removes question field
 	$(document).on('click', '.remove_question_field', function(){
 		$(this).closest('.question').remove();
 	})

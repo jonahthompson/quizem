@@ -144,6 +144,10 @@ body {
 	border-radius: 5px;
 	padding: 12px;
 }
+.answers_wrap {
+	position: relative;
+	top: 25px;
+}
 .next_question_button, .submit_user_quiz_button {
 	background-color: #0E5159;
 	color: white;
@@ -153,4 +157,7 @@ body {
   background-color: white;
   border-color: #0E5159;
   color: #0E5159;
+}
+.results_card {
+	margin: 50px 0px 0px 0px;
 }
