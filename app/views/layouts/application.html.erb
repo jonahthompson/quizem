@@ -24,11 +24,11 @@
             <%= link_to quizzes_path do %>
               <li class="link_color_white">All Surveys</li>
             <% end %>
-            <%= link_to edit_user_registration_path(current_user) do %>
-              <li class="link_color_white">Edit Profile</li>
-            <% end %>
             <%= link_to user_path(current_user) do %>
               <li class="link_color_white">User Profile</li>
+            <% end %>
+            <%= link_to edit_user_registration_path(current_user) do %>
+              <li class="link_color_white">Edit Profile</li>
             <% end %>
           </ul>
         </div>
