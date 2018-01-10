@@ -1,23 +1,24 @@
 <div class="container">
-		<div class="card">
-			<div class="card-header">
-				<h2><%= current_user.first_name %> <%= current_user.last_name %></h2>
-			</div>
-			<div class="card-body">
-				<div class="form-row">
-					<div class="col-4">
-						<%= image_tag current_user.avatar.url(:medium) %>
-						<p><%= current_user.email %></p>
-						<p>Member since: <%= current_user.created_at.to_formatted_s(:long_ordinal) %></p>
+	<div class="card">
+		<div class="card-header">
+			<h2><%= current_user.first_name %> <%= current_user.last_name %></h2>
+		</div>
+		<div class="card-body">
+			<div class="form-row">
+				<div class="col-4">
+					<%= image_tag current_user.avatar.url(:medium) %>
+					<p><%= current_user.email %></p>
+					<p>Member since: <%= current_user.created_at.to_formatted_s(:long_ordinal) %></p>
+				</div>
+				<div class="col-8">
+					<% @quizzes.each do |quiz| %>
+					<div class="card-body">
+					 	<h5><%= quiz.name %></h5> <%= link_to "Take Survey", quiz_path(quiz) %></br>Subject: <%= quiz.subject %></br><%= link_to "Delete Survey", quiz_path(quiz), class: "delete_survey float-right", method: :delete %>
 					</div>
-					<div class="col-8">
-						<% @quizzes.each do |quiz| %>
-						<div class="card-body">
-						 	<h5><%= quiz.name %></h5> <%= link_to "Take Survey", quiz_path(quiz) %></br>Subject: <%= quiz.subject %></br><%= link_to "Delete Survey", quiz_path(quiz), class: "delete_survey float-right", method: :delete %>
-						</div>
-						<% end %>
-					</div>
+					<% end %>
 				</div>
 			</div>
+			<%= link_to "Edit Profile", edit_user_registration_path(current_user) %>
 		</div>
+	</div>
 </div>

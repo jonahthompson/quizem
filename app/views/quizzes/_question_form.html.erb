@@ -18,7 +18,7 @@
 								<%= r.hidden_field "taken_question[#{i}][question_id]", value: question.id %>
 							  <div class="form-row">
 							  	<ul class="answers_wrap">
-							    	<p class="radio_button"><%= answer.content %> <%= r.radio_button "taken_question[#{i}][response]", answer.content %></p>
+							    	<p class="radio_button"><%= r.radio_button "taken_question[#{i}][response]", answer.content %> <%= answer.content %></p>
 							    </ul>
 							  </div>
 						  <% end %>
