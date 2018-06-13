@@ -9,7 +9,9 @@
   </head>
   <body>
     <nav class="navbar nav">
-     <%= link_to "Quizem", root_path, class: "navbar-brand brand" %>
+     <%= link_to root_path do %>
+        <h1 class="navbar-brand brand">Quizem</h1>
+      <% end %>
       <div class="nav_list">
         <% if current_user %>
         <div class="nav-item">
