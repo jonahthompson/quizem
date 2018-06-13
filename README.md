@@ -6,4 +6,4 @@ System dependencies: Latest version of Google Chrome
 
 Required gems: Devise, Paperclip, and good old Bootstrap
 
-Database creation: I used SQLite but do what thou wilt
+Database creation: I used SQLite
